@@ -110,6 +110,11 @@ SELECT index_type_desc, page_count,
     (DB_ID(N'columnStoreDB'), OBJECT_ID(N'dbo.StockItemTransactions',N'U'), NULL, NULL , 'DETAILED'); 
 EXEC dbo.sp_spaceused @objname = N'dbo.StockItemTransactions', @updateusage = true;
 
+SELECT index_type_desc, page_count,
+ record_count, avg_page_space_used_in_percent 
+ FROM sys.dm_db_index_physical_stats
+    (DB_ID(N'columnStoreDB'), OBJECT_ID(N'dbo.StockItemTransactionsNew',N'U'), NULL, NULL , 'DETAILED'); 
+EXEC dbo.sp_spaceused @objname = N'dbo.StockItemTransactionsNew', @updateusage = true;
 
 --answer the next questions 
 --1. How many segments are for each column ? 1 segement for each column
